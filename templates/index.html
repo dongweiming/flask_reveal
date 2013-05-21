@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Welcome Reveal{% endblock %}
+{% block description %}<meta name="description" content="ddd"/>{% endblock %}
+{% block bodyclass %}{{ super() }}<body class="index-view">{% endblock %}
+{% block sections %}
+        <section class="marquee">
+
+              <div class="description">
+                <h2>The Easiest Way to Present Online</h2>
+                <p>rvl.io lets you author <a target="_blank" href="http://www.rvl.io/hakim/theming">beautiful presentations</a>, right in your browser.</p>
+                <a class="positive-button sign-up" href="">Get Started</a>
+              </div>
+        </section>
+        <section class="features" id="features">
+                  <ul>
+                  <li>
+                      <span class="iconic eye"></span>
+                      <h3>Easy Editing</h3>
+                      <p>The rvl.io editor is incredibly easy to use. Presentation styles are applied to the slides while you edit them so you'll know exactly what you're getting.</p>
+                    </li>
+                  <li>
+                      <span class="iconic iphone"></span>
+                      <h3>Mobile</h3>
+                      <p>Presentations can be viewed in any modern browser, including mobile. Touch devices are presented with a touch-optimised presentation.</p>
+                    </li>
+                    <li>
+                      <span class="iconic brush_alt"></span>
+                      <h3>With Style</h3>
+                      <p>There's a wide variety of themes and transitions to pick from to make sure things look and move the way you want them.</p>
+                    </li>
+                    <li>
+                      <span class="iconic key_stroke"></span>
+                      <h3>Publishing</h3>
+                      <p>Your presentations are private which means you're the only one who can see them. If you want, you can chose to publish your work which makes it available to everyone.</p>
+                    </li>
+                    <li>
+                      <span class="iconic cloud_download"></span>
+                      <h3>Export</h3>
+                      <p>We understand the need for sometimes taking your work offline so we provide an easy-to-use method for exporting your presentations.</p>
+                    </li>
+                    <li>
+                      <span class="iconic hash"></span>
+                      <h3>Edit HTML</h3>
+                      <p>rvl.io presentations are HTML documents so if the editor doesn't bend as far as you'd like it, you can always write the markup yourself using the HTML editor.</p>
+                    </li>
+                  </ul>
+                </section>
+        <div id="main">
+            <a class="demo" target="_blank" href="http://youtu.be/LyWAc7dBvmA">
+                  <span>Demo</span>
+                </a>
+                <a class="twitter" target="_blank" href="http://twitter.com/rvlio">
+                  <span>@rvlio</span>
+                </a>
+        </div>
+{% endblock %}
+{% block js %}<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="{{ static(filename='javascript/lib-core.js')}}"></script>
+        <script src="{{ static(filename='javascript/rvl.min.js')}}"></script>{% endblock %}

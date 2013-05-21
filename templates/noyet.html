@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Presentations by {{ username }}{% endblock %}
+{% block description %}<meta name="description" content="The easiest way to create and share beautiful presentations."/>{% endblock %}
+{% block headjs %}
+    <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
+{% endblock %}
+{% block bodyclass %}{{ super() }}<body>{% endblock %}
+{% block sections %}
+<div id="container" class="container">
+<div id="main" class="main" role="main">
+<div class="column">
+	<section class="presentations">
+
+		<div class="user-info">
+	<div class="picture" style="background-image: url({{ img }})"></div>
+	<div class="text">
+		<h2>
+			<a href="/{{ username }}" class="username">{{ username }}</a>
+		</h2>
+		<p class="description linkify"></p>
+		<ul class="links">
+			
+			
+		</ul>
+	</div>
+	<div class="clear"></div>
+</div>
+	<p>{{ msg }}(</p>
+		<ul class="decks">
+		</ul>
+	</section>
+</div>
+      </div></div>
+{% endblock %}

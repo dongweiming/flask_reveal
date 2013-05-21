@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block html %}<html class="users show" data-account="free">{% endblock %}
+{% block title %}Reveal: {{username }}{% endblock %}
+{% block description %}<meta name="description" content="Create and share good looking presentations in a breeze"/>{% endblock %}
+{% block bodyclass %}{{ super() }}<body>{% endblock %}
+{% block headjs %}
+    <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
+{% endblock %}
+{% block sections %}
+<div id="main" class="main" role="main">
+    <section class="presentations">
+      {% if not decks %}
+      <h1>You hasn"t published any decks yet</h1>
+      {% else %}
+      <h1>{{username }}'s presentations</h1>
+
+      <ul class="decks">
+        {% for deck in decks %}
+        <li class="public" 
+          data-url="/{{username }}/{{ deck.title }}" 
+          data-slug="{{ deck.title }}" 
+          data-title="{{ deck.title }}" 
+          data-published="{{ deck.published }}">
+
+          <div class="deck-thumbnail theme-font-league theme-color-grey-blue">
+            <div class="reveal reveal-viewport">
+              {{ deck.data|safe }}
+            </div>
+          </div>
+          <h2><a href="/{{username }}/{{ deck.title }}">{{ deck.title }}</a></h2>
+          <p></p>
+          <div class="details">
+              <span class="status">Published <time class="value date" datetime="{{ deck.pubtime }}"></time></span>
+              <span class="views" data-tooltip="Views" data-tooltip-delay="500"><span class="icon i-eye"></span>0</span>
+          </div>
+          <div class="lock-icon icon i-lock-stroke" data-tooltip="This deck is private"></div>
+          <div class="controls">
+              <button class="button grey share l" data-tooltip="Share"><span class="icon i-share"></span></button>
+              <button class="button grey edit l" data-tooltip="Edit"><span class="icon i-pen-alt2"></span></button>
+              <button class="button grey publish l" data-tooltip="Publish"><span class="icon i-unlock-stroke"></span></button>
+              <button class="button grey unpublish l" data-tooltip="Unpublish"><span class="icon i-lock-stroke"></span></button>
+              <button class="button negative delete l" data-tooltip="Delete"><span class="icon i-trash-stroke"></span></button>
+          </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </section>
+  </div>
+</div>
+{% endblock %}

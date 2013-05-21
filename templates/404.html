@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}Reveal: 404{% endblock %}
+{% block description %}<meta name="viewport" content="width=800" />{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ static(filename='stylesheet/rvl.min.css')}}" />
+<style type="text/css">
+
+    .message {
+      max-width: 800px;
+      margin: 3em auto 3em auto;
+    }
+      .message .inner {
+        padding: 30px 20px;
+        margin: 0 20px;
+        background: #fff;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+      }
+
+    h2 {
+      font-size: 30px;
+      color: #333;
+      line-height: 1.1em;
+    }
+
+    .header {
+      width: 100%;
+      height: 170px;
+      padding: 40px 0;
+
+      background: #222;
+      border-bottom: 1px solid #fff;
+      text-align: center;
+    }
+
+    .logo-animation {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+    }
+
+      .logo-animation img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #E5637C;
+      }
+
+      .logo-animation .box-1,
+      .logo-animation .box-2 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+        -webkit-transition: all 0.5s cubic-bezier(.75,-0.3,.31,2);
+           -moz-transition: all 0.5s cubic-bezier(.75,-0.3,.31,2);
+            -ms-transition: all 0.5s cubic-bezier(.75,-0.3,.31,2);
+                transition: all 0.5s cubic-bezier(.75,-0.3,.31,2);
+      }
+
+      .logo-animation .box-1 {
+        background: #512833;
+      }
+
+      .logo-animation .box-2 {
+        background: #934358;
+      }
+
+      .logo-animation.open .box-1 {
+        -webkit-transform: rotate( 8deg ) translateX( 12px );
+           -moz-transform: rotate( 8deg ) translateX( 12px );
+            -ms-transform: rotate( 8deg ) translateX( 12px );
+                transform: rotate( 8deg ) translateX( 12px );
+      }
+
+      .logo-animation.open .box-2 {
+        -webkit-transform: rotate( 4deg ) translateX( 8px );
+           -moz-transform: rotate( 4deg ) translateX( 8px );
+            -ms-transform: rotate( 4deg ) translateX( 8px );
+                transform: rotate( 4deg ) translateX( 8px );
+      }
+
+      .logo-animation.open:hover .box-1,
+      .logo-animation.open:hover .box-2 {
+        -webkit-transition: all 0.3s ease;
+           -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+
+        -webkit-transform: none;
+           -moz-transform: none;
+            -ms-transform: none;
+                transform: none;
+      }
+
+  </style>
+{% endblock %}
+{% block headjs %}
+<script>
+    setTimeout( function() {
+      if( typeof document.querySelector === 'function' ) {
+        var animation = document.querySelector( '.logo-animation' );
+        if( animation ) {
+          animation.className += ' open';
+        }
+      }
+    }, 600 );
+  </script>
+  {% endblock %}
+  {% block bodyclass %}{{ super() }}<body>{% endblock %}
+  {% block header %}{% endblock %}
+  {% block sections %}
+  <div class="header">
+    <h1 class="logo-animation">
+      <a href="/">
+        <div class="box-1"></div>
+        <div class="box-2"></div>
+        <img alt="rvl.io" width="50" src="{{ static(filename='images/rvl-logo-flat-600x600.svg')}}" />
+      </a>
+    </h1>
+  </div>
+  <div class="message">
+    <div class="inner">
+      <h2>The page you were looking for doesn't exist.</h2>
+      <p>You may have mistyped the address or the page may have moved.</p>
+    </div>
+  </div>
+  {% endblock %}
+ {% block modalcoder %}{% endblock %}

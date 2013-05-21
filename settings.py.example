@@ -1,0 +1,42 @@
+# the debug mode
+DEBUG = True
+# mongodb's database name
+MONGODB_DB = 'reveal'
+# mongodb's ip/hostname
+MONGODB_HOST = 'localhost'
+# mongodb's port ,default 27017
+MONGODB_PORT = 27017
+
+# Your social key and secret
+SOCIAL_AUTH_GITHUB_KEY = ''
+SOCIAL_AUTH_GITHUB_SECRET = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+SOCIAL_AUTH_INSTAGRAM_KEY = ''
+SOCIAL_AUTH_INSTAGRAM_SECRET = ''
+SOCIAL_AUTH_LINKEDIN_KEY = ''
+SOCIAL_AUTH_LINKEDIN_SECRET = ''
+SOCIAL_AUTH_TUMBLR_KEY = ''
+SOCIAL_AUTH_TUMBLR_SECRET = ''
+SOCIAL_AUTH_BITBUCKET_KEY = ''
+SOCIAL_AUTH_BITBUCKET_SECRET = ''
+SOCIAL_AUTH_STACKOVERFLOW_KEY = ''
+SOCIAL_AUTH_STACKOVERFLOW_SECRET = ''
+SOCIAL_AUTH_STACKOVERFLOW_API_KEY = ''
+SOCIAL_AUTH_DOUBAN2_KEY = ''
+SOCIAL_AUTH_DOUBAN2_SECRET = ''
+SOCIAL_AUTH_TRELLO_KEY = ''
+SOCIAL_AUTH_TRELLO_SECRET = ''
+SECRET_KEY = 'random-secret-key'
+SESSION_COOKIE_NAME = 'psa_session'
+# Your social authentication backends
+SOCIAL_AUTH_AUTHENTICATION_BACKENDS=(
+    'social.backends.github.GithubOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.tumblr.TumblrOAuth',
+    'social.backends.linkedin.LinkedinOAuth',
+    'social.backends.stackoverflow.StackoverflowOAuth2',
+    'social.backends.instagram.InstagramOAuth2',
+    'social.backends.bitbucket.BitbucketOAuth',
+    'social.backends.trello.TrelloOAuth'
+    )

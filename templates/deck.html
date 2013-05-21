@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block html %}<html class="decks show" data-account="free">{% endblock %}
+{% block title %}Reveal: {{username }} {{ data.title }}{% endblock %}
+{% block description %}<meta name="description" content="Create and share good looking presentations in a breeze"/>{% endblock %}
+{% block bodyclass %}{{ super() }}<body>{% endblock %}
+{% block css %}
+      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/rvl.min.css')}}" />
+      <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.css')}}" />
+      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/application.css')}}" />
+      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/reveal-a0d05daf5fb6eab927a9151073ccd847.css')}}" />
+{% endblock %}
+{% block headjs %}
+    <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
+{% endblock %}
+{% block sections %}
+<div class="marquee loading">
+
+  <div class="options">
+    <a class="fullscreen-button" data-tooltip="Fullscreen" data-tooltip-delay="500" href="#"><span class="icon i-fullscreen"></span></a>
+    <a class="external-button" data-tooltip="Open in new window" data-tooltip-delay="500" href="/dongweiming/deck--3/fullscreen" target="_blank"><span class="icon i-new-window"></span></a>
+    <a class="comment-button" data-tooltip="Comments" data-tooltip-delay="500" href="#comments"><span class="icon i-comment-stroke"></span></a>
+    <a class="share-button" data-tooltip="Share" data-tooltip-delay="500" href="#"><span class="icon i-share"></span></a>
+    <a class="edit-button" data-tooltip="Edit" data-tooltip-delay="500" href="/{{ username }}/{{ data.title }}/edit"><span class="icon i-pen-alt2"></span></a>
+  </div>
+  <div class="reveal-frame">
+    <div class="reveal reveal-viewport theme-font-league theme-color-grey-blue">
+      <div class="slides">
+        <section><h1>Untitled  <br>
+</h1></section>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="column">
+  <header>
+    <ul class="meta">
+      <li><span class="icon i-user"></span> <a class="value" href="/{{ username }}">{{ username }}</a></li>
+      <li><span class="icon i-clock"></span> <time class="value ago" datetime="2013-05-20 15:30:30 UTC"></time></li>
+      <li><span class="icon i-eye"></span> <span class="value">0</span></li>
+    </ul>
+
+    <ul class="social">
+      <li><div class="fb-like" data-send="false" data-layout="button_count" data-show-faces="false"></div></li>
+      <li><a href="https://twitter.com/share" class="twitter-share-button" data-text="deck" data-url="http://rvl.io/{{ username }}/{{ data.title }}">Tweet</a></li>
+      <li><div class="g-plusone" data-size="medium"></div></li>
+    </ul>
+  </header>
+
+  <section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+  </section>
+{% if other %}
+  <section class="deck-list">
+    <h2>More from <a href="/{{username }}">{{ username }}</a></h2>
+{% for deck in other %}
+    <ul class="carousel">
+      <li>
+  <div class="deck-thumbnail">
+    <div class="reveal reveal-viewport theme-font-league theme-color-grey-blue">
+      {{ deck.data|safe }}
+    </div>
+    <a class="deck-link" href="/{{ username }}/{{ deck }}"></a>
+  </div>
+  <div class="details">
+    <a class="author" href="/{{ username }}">{{ username }}</a>
+  </div>
+  </li>
+  </ul>
+{% endfor %}
+  </section>
+{% endif %}
+</div>
+
+      </div>
+{% endblock %}
+{% block js %}
+<script src="{{ static(filename='javascript/application.js')}}"></script>
+<script src="{{ static(filename='javascript/reveal.min-ef776eb2be8c048e934ac8426d307c4e.js')}}"></script>
+<script>
+  var SLConfig = {
+    current_user: {
+      name: "",
+      username: "{{ username }}",
+      pro: false
+    }
+    ,
+    deck: {
+      user: {
+        name: "",
+        username: "{{ username }}"
+      },
+      id: "{{ data.tid }}",
+      slug: "{{ data.title }}",
+      title: "{{ data.title }}",
+      description: "{{ data.description }}",
+      access_token: "YnCGdsnvStQepRVEefzypwb9X64r",
+      published: {{ data.published|bool }},
+      transition: "{{ data.transition }}",
+      theme_font: "{{ data.theme_font }}",
+      theme_color: "{{ data.theme_color }}",
+      rolling_links: {{ data.rolling_links|bool }},
+      should_loop: {{ data.should_loop|bool }},
+      center: {{ data.center|bool }},
+      rtl: {{ data.rtl|bool }}
+    }
+  }
+</script>
+<script src="{{ static(filename='javascript/lib-core.js')}}"></script>
+<script src="{{ static(filename='javascript/rvl.min.js')}}"></script>
+{% endblock %}

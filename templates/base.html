@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+  {% block html %}<html lang="en">{% endblock %}
+    <head>
+      <title>{% block title %}{% endblock %}</title>
+      {% block description %}{% endblock %}
+      <link rel="icon" href="{{ static(filename='images/favicon.ico')}}" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      {% block meta %}{% endblock %}
+      <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <!--[if lt IE 9]>
+    	   <script src="/s/lib/js/html5shiv.js"></script>
+    	<![endif]-->
+      <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" />
+      {% block css %}
+      <link rel="stylesheet" href="{{ static(filename='stylesheet/rvl.min.css')}}" />
+      <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.css')}}" />
+      <link rel="stylesheet" href="{{ static(filename='stylesheet/application.css')}}" />
+      {% endblock %}
+      {% block headjs %}
+    <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
+    {% endblock %}
+    </head>
+    {% block bodyclass %}{% endblock %}
+    {% block header %}
+    <header>
+      <div class="wrapper">
+        <h1>
+          <a href="/">
+            <div class="box-1"></div>
+            <div class="box-2"></div>
+            <img alt="rvl.io" width="50" src="{{ static(filename='images/rvl-logo-flat-600x600.svg')}}" />
+            <span>beta</span>
+          </a>
+        </h1>
+        {% if current_user.is_authenticated() %}
+        <a class="neutral-button sign-out" href="{{ url_for("social.disconnect", backend=session.provider, association_id=backends.associated.username) }}">Sign Out</a><a class="positive-button create-deck" href="/{{backends.associated.username}}/new">New Deck</a><a class="profile" href="/{{ backends.associated.username }}"><span class="iconic user"></span><span class="username">{{ backends.associated.username }}</span></a>
+        {% else %}
+        <a class="positive-button sign-in" href="">Sign In</a>
+        {% endif %}
+      </div>
+    </header>
+    {% endblock %}
+    {% block sections %}{% endblock %}
+    {% block foot %}
+    <footer>
+      <small>&copy; rvl.io 2013 - <a href="/tos">Terms of Service</a> - <a href="http://www.iubenda.com/privacy-policy/251798">Privacy Policy</a> - <a href="/about">About Us</a> - <a target="_blank" href="https://rvlio.uservoice.com/forums/175819-general">Leave Feedback</a> - <a href="http://www.facebook.com/pages/rvlio/368492516577191?ref=hl">Facebook</a> - <a href="http://twitter.com/rvlio">Twitter</a></small>
+    </footer>{% endblock %}
+    {% block moment %}{% endblock %}
+    {% block modalcoder %}
+    <div id="modal-cover"></div>
+        <div id="modal">
+
+          <div class="login">
+      <form method="post" action="" id="disconnect-form"><input type="hidden" name="continue" type="text" /></form>
+      <form method="get" class="openid" action="/login_redir">
+
+          <input type="hidden"/>
+          <div>
+            <ul class="providers">
+            </ul>
+          </div>
+          <fieldset>
+            <div><input type="hidden" name="claimid" type="text" />
+            <input type="submit" value="Login" /></div>
+          </fieldset>
+        </form>
+        <aside>By signing in you are agreeing to the <a href="/tos">Terms of Service</a></aside>
+      </div>
+      {% endblock %}
+{% block modal %}{% endblock %}
+
+    {% block js %}<script src="{{ static(filename='javascript/application.js')}}"></script>
+    <script src="{{ static(filename='javascript/lib-core.js')}}"></script>
+    <script src="{{ static(filename='javascript/rvl.min.js')}}"></script>{% endblock %}
+  </body>
+</html>

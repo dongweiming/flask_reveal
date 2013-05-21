@@ -1,0 +1,359 @@
+{% extends 'base.html' %}
+{% block html %}<html class="decks edit" data-account="free" data-published="true" >{% endblock %}
+{% block bodyclass %}{{ super() }}<body>{% endblock %}
+{% block title %}Reveal {{ username }} Edit: {{ data.title }}{% endblock %}
+{% block description %}<meta name="description" content="Create and share good looking presentations in a breeze"/>{% endblock %}
+{% block css %}
+    <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.css')}}" />
+    <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/application.css')}}" />
+    <link rel="stylesheet" href="{{ static(filename='stylesheet/reveal-a0d05daf5fb6eab927a9151073ccd847.css')}}" />
+{% endblock %}
+{% block headjs %}
+    <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
+{% endblock %}
+{% block header %}{% endblock %}
+{% block sections %}
+<div class="page-preloader">
+      <div class="inner">
+        <p class="message">Loading editor</p>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div class="page-wrapper">
+
+      <button class="button exit-preview grey l"><span class="icon i-arrow-left"></span></button>
+
+      <div class="sidebar">
+
+        <div class="primary">
+          <button class="button save disabled">
+            <span class="icon download i-download"></span>
+            <span class="icon check i-checkmark"></span>
+            <span class="spinner centered"></span>
+          </button>
+          <button class="button preview"><span class="icon i-eye"></span></button>
+
+          <div class="divider"></div>
+        </div>
+
+        <div class="secondary">
+          <button class="button publish"><span class="icon i-unlock-stroke"></span><span class="text">&nbsp;</span></button>
+          <button class="button settings">Settings <span class="icon i-cog"></span><span class="close icon i-x"></span></button>
+          <button class="button style">Style <span class="icon i-brush"></span><span class="close icon i-x"></span></button>
+          <button class="button arrange">Arrange <span class="icon i-layers"></span><span class="close icon i-x"></span></button>
+          <button class="button revisions">Revisions <span class="icon i-clock"></span><span class="close icon i-x"></span></button>
+          <button class="button migrate">Export <span class="icon i-cloud-download"></span><span class="close icon i-x"></span></button>
+          <button class="button share">Share <span class="icon i-share"></span><span class="close icon i-x"></span></button>
+
+          <div class="divider"></div>
+
+          <button class="button toggle auto-hide" data-tooltip="Hide the sidebar" data-tooltip-direction="r" data-tooltip-delay="1500"><span class="state"></span> Auto-hide</button>
+          <button class="button toggle auto-save" data-tooltip="Auto-save every few seconds" data-tooltip-direction="r" data-tooltip-delay="1500"><span class="state"></span> Auto-save</button>
+        </div>
+
+        <header class="global-header">
+  <div class="wrapper">
+    <h1 class="logo-animation">
+      <a class="symbol" href="/">
+        <div class="box-1"></div>
+        <div class="box-2"></div>
+        <div class="box-3"></div>
+      </a>
+      <a class="word" href="/"></a>
+    </h1>
+    <ul class="nav">
+
+        <li>
+          <div class="profile dropdown">
+            <a class="dropdown-button" href="/{{ username }}">
+              <span class="icon i-user"></span>
+              <span class="username">{{ username }}</span>
+            </a>
+
+            <div class="dropdown-list">
+              <ul class="dropdown-list-inner">
+                <li>
+                  <a class="button grey" href="/{{ username }}">
+                    Your decks <span class="icon i-home"></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="button grey" href="#">
+                    Settings <span class="icon i-cog"></span>
+                  </a>
+                </li>
+                <li>
+                  <a class="button grey negative" href="{{ url_for("social.disconnect", backend=session.provider, association_id=backends.associated.username) }}" data-method="delete" rel="nofollow">
+                    Sign out <span class="icon i-exit"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="/{{ username }}/new" class="button grey">New Deck</a></li>
+
+    </ul>
+  </div>
+</header>
+
+      </div>
+
+      <div class="sidebar-panel">
+
+        <section class="settings">
+          <h2>Settings</h2>
+
+          <div class="unit text title">
+            <label for="deck[title]">Title</label>
+            <input id="deck-input-title" name="deck[title]" size="30" type="text" placeholder="Title" class="xl" />
+          </div>
+
+          <div class="unit text slug">
+            <span class="prefix">http://</span>
+            <input id="deck-input-slug" name="deck[slug]" size="30" type="text" placeholder="URL" class="l" />
+          </div>
+
+          <div class="unit text description">
+            <label for="deck[description]">Description</label>
+            <textarea id="deck-input-description" name="deck[description]" rows="4" maxchars="30" placeholder="This will appear next to your deck"></textarea>
+          </div>
+
+          <div class="toggles">
+            <button class="button toggle" data-property="center" data-tooltip="Center slide contents vertically<br>(not visible while editing)" data-tooltip-direction="t" data-tooltip-delay="500">Vertical centering <span class="state"></span></button>
+            <button class="button toggle" data-property="should_loop" data-tooltip="Makes the last slide loop back to the first" data-tooltip-direction="t" data-tooltip-delay="500">Loop presentation <span class="state"></span></button>
+            <button class="button toggle" data-property="rtl" data-tooltip="Makes content flow right-to-left" data-tooltip-direction="b" data-tooltip-delay="500">Right-to-left <span class="state"></span></button>
+            <button class="button toggle" data-property="rolling_links" data-tooltip="Controls the 3D hover effect on links" data-tooltip-direction="b" data-tooltip-delay="500">Rolling links <span class="state"></span></button>
+          </div>
+
+          <footer>
+            <button class="button cancel negative grey xl">Cancel</button>
+            <button class="button save xl">OK</button>
+          </footer>
+        </section>
+
+        <section class="style">
+          <div class="selector color">
+            <h3>Color</h3>
+            <ul>
+              <li data-color="grey-blue"></li>
+              <li data-color="black-mint"></li>
+              <li data-color="black-orange"></li>
+              <li data-color="forest-yellow"></li>
+              <li data-color="lila-yellow"></li>
+              <li data-color="cobalt-orange"></li>
+              <li data-color="asphalt-orange"></li>
+              <li data-color="sky-blue"></li>
+              <li data-color="beige-brown"></li>
+              <li data-color="sand-grey"></li>
+              <li data-color="white-blue"></li>
+            </ul>
+          </div>
+          <div class="selector font">
+            <h3>Font</h3>
+            <ul>
+              <li data-name="League" data-font="league"</li>
+              <li data-name="Open Sans" data-font="opensans"</li>
+              <li data-name="Josefine" data-font="josefine"</li>
+              <li data-name="Palatino" data-font="palatino"</li>
+              <li data-name="News" data-font="news"</li>
+              <li data-name="Montserrat" data-font="montserrat"</li>
+              <li data-name="Helvetica" data-font="helvetica"</li>
+              <li data-name="Asul" data-font="asul"</li>
+              <li data-name="Merriweather" data-font="merriweather"</li>
+              <li data-name="Sketch" data-font="sketch"</li>
+              <li data-name="Quicksand" data-font="quicksand"</li>
+            </ul>
+          </div>
+          <div class="selector transition">
+            <h3>Transition</h3>
+            <ul>
+              <li data-transition="default"></li>
+              <li data-transition="concave"></li>
+              <li data-transition="linear"></li>
+              <li data-transition="none"></li>
+              <li data-transition="cube"></li>
+              <li data-transition="page"></li>
+            </ul>
+          </div>
+          <footer>
+            <button class="button cancel negative grey xl">Cancel</button>
+            <button class="button save xl">OK</button>
+          </footer>
+        </section>
+
+        <section class="migrate">
+          <div class="section download">
+            <h2>Download deck</h2>
+            <p>
+              Download your deck as an HTML document that can be opened even when you're offline. Note that images will still load from the server, for now.
+            </p>
+            <button class="button download-html l">Download</button>
+          </div>
+          <div class="section">
+            <h2>Get HTML</h2>
+            <p>
+              You can manually edit the source code of your deck by exporting it to <a href="http://github.com/hakimel/reveal.js" target="_blank">reveal.js</a>. Simply <a href="https://github.com/hakimel/reveal.js/zipball/master" target="_blank">download</a> a copy of the framework and inject the contents below.
+            </p>
+            <textarea class="deck-html-contents" readonly></textarea>
+          </div>
+          <footer>
+            <button class="button close xl grey">Close</button>
+          </footer>
+        </section>
+
+        <section class="share">
+          <div class="contents"></div>
+          <footer>
+            <button class="button close xl grey">Close</button>
+          </footer>
+        </section>
+
+        <section class="revisions">
+          <h2>Revision History</h2>
+          <ul class="version-list"></ul>
+          <p class="loading"><span class="spinner"></span></p>
+          <p class="empty">Once you've saved your deck a few times you'll see a change log here. You'll also be able to roll back to specific versions.</p>
+          <p class="error">Please try again by closing and re-opening this panel.</p>
+          <footer>
+            <button class="button close xl grey">Close</button>
+          </footer>
+        </section>
+      </div>
+
+      <article class="projector">
+        <div class="skriv-container">
+          <ul class="skriv">
+            <li data-id="bold" data-command="bold" data-tags="b,strong" data-keys="66"></li>
+            <li data-id="italic" data-command="italic" data-tags="i,em" data-keys="73"></li>
+            <li data-id="underline" data-command="underline" data-tags="u" data-keys="85"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="align" data-model="skriv.actions.align"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="ul" data-command="insertunorderedlist" data-tags="ul"></li>
+            <li data-id="ol" data-command="insertorderedlist" data-tags="ol"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="fontFormat" data-model="skriv.actions.fontFormat"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="removeFormat" data-command="removeFormat"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="foregroundColor" data-model="skriv.actions.foregroundColor"></li>
+            <li data-id="backgroundColor" data-model="skriv.actions.backgroundColor"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="link" data-model="skriv.actions.link" data-tags="a" data-keys="76"></li>
+            <li data-id="unlink" data-model="skriv.actions.unlink" data-tags="a"></li>
+
+            <li data-id="divider"></li>
+            <li data-id="image" data-model="skriv.actions.image" data-tags="img" data-maxsize="5000" data-endpoint="/api/v1/media.json"></li>
+          </ul>
+        </div>
+
+        <div class="reveal-viewport theme-font-league theme-color-grey-blue">
+          <div class="reveal">
+            <div class="slides">
+              {{ data.data|safe }}
+            </div>
+          </div>
+        </div>
+
+        <div class="icon i-plus-alt add-horizontal-slide" data-tooltip="Add new slide" data-tooltip-direction="l" data-tooltip-delay="1500">
+          <span class="icon i-plus"></span>
+        </div>
+        <div class="icon i-plus-alt add-vertical-slide" data-tooltip="Add new slide" data-tooltip-direction="t" data-tooltip-delay="1500">
+          <span class="icon i-plus"></span>
+        </div>
+      </article>
+
+    </div>
+
+    <div id="modal-background"></div>
+<div id="modal-cover"></div>
+<div id="modal">
+
+  <div class="share-deck">
+    <footer>
+      <button class="button xl done">Done</button>
+    </footer>
+  </div>
+
+  <div class="no-session">
+    <h3>Session Expired</h3>
+    <p>You are no longer signed in to Slides. This can happen when you leave the editor idle for too long, log out in a different tab or go offline. To continue please:</p> 
+    <ol>
+      <li>Open the <a href="/" target="_blank">Slides</a> home page in another tab and sign in.</li>
+      <li>Come back to this tab and press the 'Retry' button.</li>
+    </ol>
+    <footer>
+      <button class="button negative ignore xl">Ignore</button>
+      <button class="button retry xl">Retry</button>
+    </footer>
+  </div>
+
+  <div class="edit-html">
+    <h3>Edit HTML</h3>
+    <div id="ace-html" class="editor"></div>
+    <footer>
+        <button class="button negative discard-changes xl">Cancel</button>
+        <button class="button save-changes xl">OK</button>
+    </footer>
+  </div>
+
+  <div class="edit-css">
+    <h3>Edit CSS</h3>
+    <p>All selectors will automatically be prefixed with <code>.reveal</code> when saved.</p>
+    <div id="ace-css" class="editor"></div>
+    <footer>
+        <button class="button negative discard-changes xl">Cancel</button>
+        <button class="button save-changes xl">OK</button>
+    </footer>
+  </div>
+
+  <div class="preview-deck">
+    <div class="spinner centered"></div>
+    <div class='deck'></div>
+    <footer></footer>
+  </div>
+  {% endblock %}
+  {% block foot %}{% endblock %}
+  {% block modalcoder %}{% endblock %}
+{% block js %}
+<script>
+  var SLConfig = {
+    current_user: {
+      name: "",
+      username: "{{ username }}",
+      pro: true
+    }
+    ,
+    deck: {
+      user: {
+        name: "",
+        username: "{{ username }}"
+      },
+      id: "{{ data.tid }}",
+      slug: "{{ data.title }}",
+      title: "{{ data.title }}",
+      description: "{{ data.description }}",
+      access_token: "YnCGdsnvStQepRVEefzypwb9X64r",
+      published: {{ data.published|bool }},
+      transition: "{{ data.transition }}",
+      theme_font: "{{ data.theme_font }}",
+      theme_color: "{{ data.theme_color }}",
+      rolling_links: {{ data.rolling_links|bool }},
+      should_loop: {{ data.should_loop|bool }},
+      center: {{ data.center|bool }},
+      rtl: {{ data.rtl|bool }}
+    }
+  }
+</script>
+<script src="{{ static(filename='javascript/application.js')}}"></script>
+<script src="{{ static(filename='javascript/vendor-edit.js')}}"></script>
+<script src="{{ static(filename='javascript/reveal.min-ef776eb2be8c048e934ac8426d307c4e.js')}}"></script>
+{% endblock %}
