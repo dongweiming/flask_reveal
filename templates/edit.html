@@ -4,9 +4,9 @@
 {% block title %}Reveal {{ username }} Edit: {{ data.title }}{% endblock %}
 {% block description %}<meta name="description" content="Create and share good looking presentations in a breeze"/>{% endblock %}
 {% block css %}
-    <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.css')}}" />
+    <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.min.css')}}" />
     <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/application.css')}}" />
-    <link rel="stylesheet" href="{{ static(filename='stylesheet/reveal.css')}}" />
+    <link rel="stylesheet" href="{{ static(filename='stylesheet/reveal.min.css')}}" />
 {% endblock %}
 {% block headjs %}
     <script src="{{ static(filename='javascript/modernizr.js')}}"></script>

@@ -5,9 +5,9 @@
 {% block bodyclass %}{{ super() }}<body>{% endblock %}
 {% block css %}
       <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/rvl.min.css')}}" />
-      <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.css')}}" />
+      <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.min.css')}}" />
       <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/application.css')}}" />
-      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/reveal.css')}}" />
+      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/reveal.min.css')}}" />
 {% endblock %}
 {% block headjs %}
     <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
