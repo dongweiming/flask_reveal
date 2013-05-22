@@ -11,7 +11,7 @@ from social.apps.flask_app.template_filters import backends
 from social.apps.flask_app.models import User
 
 #Your setting file
-import settings
+from flask_reveal import settings
 
 def static(filename):
     filepath = os.path.join(os.path.dirname(__file__), 'static', filename)
@@ -37,7 +37,7 @@ login_manager.login_view = 'main'
 login_manager.login_message = ''
 login_manager.setup_app(app)
 
-from flask_reveal import routes
+from flask_reveal import routes 
 
 @app.template_filter('bool')
 def bool_filter(s):
