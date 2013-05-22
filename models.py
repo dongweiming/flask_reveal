@@ -1,4 +1,4 @@
-#encoding=utf-8
+#coding=utf-8
 
 import datetime
 from mongoengine import Document, IntField, StringField, \
@@ -9,6 +9,7 @@ class Logic(Document):
     tid = IntField(min_value=1)
     username = StringField(max_length=200)
     pubtime = DateTimeField(default=datetime.datetime.now)
+    views = IntField(default=0)
     uptime = DateTimeField()
     transition = StringField(max_length=200, default="default")
     data = StringField(default="<section><h1>Untitled</h1></section>")

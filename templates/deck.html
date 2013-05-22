@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block html %}<html class="decks show" data-account="free">{% endblock %}
-{% block title %}Reveal: {{username }} {{ data.title }}{% endblock %}
+{% block title %}Reveal: {{ username }} {{ data.title }}{% endblock %}
 {% block description %}<meta name="description" content="Create and share good looking presentations in a breeze"/>{% endblock %}
 {% block bodyclass %}{{ super() }}<body>{% endblock %}
 {% block css %}
       <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/rvl.min.css')}}" />
       <link rel="stylesheet" id="theme" href="{{ static(filename='stylesheet/slides.css')}}" />
       <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/application.css')}}" />
-      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/reveal-a0d05daf5fb6eab927a9151073ccd847.css')}}" />
+      <link media="all" rel="stylesheet" href="{{ static(filename='stylesheet/reveal.css')}}" />
 {% endblock %}
 {% block headjs %}
     <script src="{{ static(filename='javascript/modernizr.js')}}"></script>
@@ -17,7 +17,6 @@
 
   <div class="options">
     <a class="fullscreen-button" data-tooltip="Fullscreen" data-tooltip-delay="500" href="#"><span class="icon i-fullscreen"></span></a>
-    <a class="external-button" data-tooltip="Open in new window" data-tooltip-delay="500" href="/dongweiming/deck--3/fullscreen" target="_blank"><span class="icon i-new-window"></span></a>
     <a class="comment-button" data-tooltip="Comments" data-tooltip-delay="500" href="#comments"><span class="icon i-comment-stroke"></span></a>
     <a class="share-button" data-tooltip="Share" data-tooltip-delay="500" href="#"><span class="icon i-share"></span></a>
     <a class="edit-button" data-tooltip="Edit" data-tooltip-delay="500" href="/{{ username }}/{{ data.title }}/edit"><span class="icon i-pen-alt2"></span></a>
@@ -38,7 +37,7 @@
     <ul class="meta">
       <li><span class="icon i-user"></span> <a class="value" href="/{{ username }}">{{ username }}</a></li>
       <li><span class="icon i-clock"></span> <time class="value ago" datetime="2013-05-20 15:30:30 UTC"></time></li>
-      <li><span class="icon i-eye"></span> <span class="value">0</span></li>
+      <li><span class="icon i-eye"></span> <span class="value">{{ data.views }}</span></li>
     </ul>
 
     <ul class="social">
@@ -53,7 +52,7 @@
   </section>
 {% if other %}
   <section class="deck-list">
-    <h2>More from <a href="/{{username }}">{{ username }}</a></h2>
+    <h2>More from <a href="/{{ username }}">{{ username }}</a></h2>
 {% for deck in other %}
     <ul class="carousel">
       <li>
@@ -75,9 +74,16 @@
 
       </div>
 {% endblock %}
+{% block modal %}
+<div class="share-deck">
+    <footer>
+      <button class="button xl done">Done</button>
+    </footer>
+</div>
+{% endblock %}
 {% block js %}
 <script src="{{ static(filename='javascript/application.js')}}"></script>
-<script src="{{ static(filename='javascript/reveal.min-ef776eb2be8c048e934ac8426d307c4e.js')}}"></script>
+<script src="{{ static(filename='javascript/reveal.min.js')}}"></script>
 <script>
   var SLConfig = {
     current_user: {
@@ -92,7 +98,7 @@
         username: "{{ username }}"
       },
       id: "{{ data.tid }}",
-      slug: "{{ data.title }}",
+      slug: "{{ data.tid }}",
       title: "{{ data.title }}",
       description: "{{ data.description }}",
       access_token: "YnCGdsnvStQepRVEefzypwb9X64r",

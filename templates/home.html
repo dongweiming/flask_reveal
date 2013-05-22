@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block html %}<html class="users show" data-account="free">{% endblock %}
-{% block title %}Reveal: {{username }}{% endblock %}
+{% block title %}Reveal: {{ username }}{% endblock %}
 {% block description %}<meta name="description" content="Create and share good looking presentations in a breeze"/>{% endblock %}
 {% block bodyclass %}{{ super() }}<body>{% endblock %}
 {% block headjs %}
@@ -18,7 +18,7 @@
         {% for deck in decks %}
         <li class="public" 
           data-url="/{{username }}/{{ deck.title }}" 
-          data-slug="{{ deck.title }}" 
+          data-slug="{{ deck.tid }}" 
           data-title="{{ deck.title }}" 
           data-published="{{ deck.published }}">
 
@@ -31,7 +31,7 @@
           <p></p>
           <div class="details">
               <span class="status">Published <time class="value date" datetime="{{ deck.pubtime }}"></time></span>
-              <span class="views" data-tooltip="Views" data-tooltip-delay="500"><span class="icon i-eye"></span>0</span>
+              <span class="views" data-tooltip="Views" data-tooltip-delay="500"><span class="icon i-eye"></span>{{ deck.views }}</span>
           </div>
           <div class="lock-icon icon i-lock-stroke" data-tooltip="This deck is private"></div>
           <div class="controls">
@@ -47,5 +47,24 @@
     {% endif %}
     </section>
   </div>
+{% endblock %}
+{% block modal %}
+<div class="share-deck">
+    <footer>
+      <button class="button xl done">Done</button>
+    </footer>
 </div>
+{% endblock %}
+{% block js %}
+<script src="{{ static(filename='javascript/application.js')}}"></script>
+<script>
+var SLConfig = {
+    current_user: {
+      name: "",
+      username: "{{ username }}",
+      pro: false
+    }
+    
+  }
+</script>
 {% endblock %}

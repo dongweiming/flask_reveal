@@ -1,12 +1,13 @@
-#encoding=utf-8
+#coding=utf-8
 
 
 from flask import render_template, request, redirect, session, jsonify
+from mongoengine import ValidationError
+
 from flask_reveal import app
 from social.apps.flask_app.utils import login_required
 from social.apps.flask_app.models import User, UserSocialAuth
 from models import Logic
-from mongoengine import ValidationError
 
 def checkuser(username):
 	try:
@@ -69,7 +70,6 @@ def deck(username, title):
 		if not deck:
 			return render_template("home.html")
 		other_deck = Logic.objects(username=username, title__ne=title)[:4]
-		deck = deck[0]
 
 	else:
 		deck = Logic.objects(username=username, title=title, published=True)
@@ -81,7 +81,8 @@ def deck(username, title):
 					msg='{} hasn"t published any decks yet :'.format(username))
 			return render_template("404.html")
 		other_deck = Logic.objects(username=username, title__ne=title, published=True)[:4]
-		deck = deck[0]
+	Logic.objects(username=username, title=title).update_one(inc__views=1)
+	deck = deck[0]
 	return render_template("deck.html", username=username, data=deck, other=other_deck)
 
 @app.route('/<string:username>/<string:title>/edit')
@@ -98,15 +99,19 @@ def edit(username, title):
 			msg='{You hasn"t published this deck!')
 	return render_template("edit.html", data=qs[0], username=username)
 
-@app.route('/api/decks/<deskname>', methods=['PUT'])
+@app.route('/api/decks/<deskname>', methods=['PUT', 'DELETE'])
 #@login_required
 def deck_api(deskname):
-	ppt = request.form
-	up = {}
-	for k, v in comb(ppt).iteritems():
-		up['set__{}'.format(k)] = v
-	Logic.objects(tid=deskname[:-5]).update(upsert=True, **up)
-	return jsonify(message=1)
+	if request.method == 'PUT':
+		ppt = request.form
+		up = {}
+		for k, v in comb(ppt).iteritems():
+			up['set__{}'.format(k)] = v
+		Logic.objects(tid=deskname[:-5]).update(upsert=True, **up)
+		return jsonify(message=1)
+	else:
+		Logic.objects(tid=deskname[:-5]).delete()
+		return "", 200
 
 @app.route('/<string:username>/new')
 @login_required

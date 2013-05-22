@@ -7,7 +7,7 @@ This is a backend implement like [slid.es](http://slid.es), Use [flask](https://
 
 First say thank to [hakimel](https://github.com/hakimel) and his [reveal.js](https://github.com/hakimel/reveal.js)
 
-I Use [python-social-auth)](https://github.com/omab/python-social-auth) for social auth, but it do not support mongoengine ,and I rewrote some code to achieve my thoughts
+I Use [python-social-auth](https://github.com/omab/python-social-auth) for social auth, but it do not support mongoengine ,and I rewrote some code to achieve my thoughts
 
 About
 =====
@@ -21,3 +21,8 @@ Usage
 You must edit the settings.py with your settings, a example settings has exist:
 
     cp settings.py.example settings.py
+
+And start the server ,You can like Django's method:
+
+    python manage.py runserver -t 0.0.0.0 -p 80
+
