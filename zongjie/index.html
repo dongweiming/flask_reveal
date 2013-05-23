@@ -20,6 +20,7 @@
 
 	<body>
 
+
 		<div class="reveal">
 
 			<div class="slides">
@@ -43,19 +44,21 @@
 					</br>
 						<ol>
 							<li class="fragment dongwmcsm">XX前端ui和api分离(web.py)</li>
-							<li class="fragment dongwmcsm">Vscenter初始demo前端，以及admin部分(django)</li>
+							<li class="fragment dongwmcsm">Vscenter初始demo，以及admin部分(django)</li>
 							<li class="fragment dongwmcsm">研究map.honeynet.org和view.linuxtones.org的效果(nodejs)</li>
-							<li class="fragment dongwmcsm">数据中心(django)</li>
-							<li class="fragment dongwmcsm">公司内刊展示(flask)</li>
+							<li class="fragment dongwmcsm">新版数据中心(django)</li>
+							<li class="fragment dongwmcsm">自动化XX系统</li>
+							<li class="fragment dongwmcsm">XX业务restapi</li>
 						</ol>
 					</section>
 					<section>
 						<h2 class="dongwmtitle dongwmgreen">2012年主要收获及心得</h2>
 					</br>
 					<ol>
-						<li class="fragment highlight-red ">对python框架有了更深刻的理解</li>
+						<li class="fragment highlight-red ">对python的web框架有了更深刻的理解</li>
+						<li class="fragment highlight-red ">对python有了更深入的学习和实践</li>
 						<li class="fragment highlight-red ">终于可以自己设计网站风格了！</li>
-						<li class="fragment highlight-red ">XXX</li>
+						<li class="fragment highlight-red ">参与了公司很多项目的维护</li>
 						<li class="fragment highlight-red ">在一个温馨，压力，共进步的环境真好</li>
 					</ol>
 					<img id="leftimg" src ="images/zdcy.png"></p>
@@ -64,9 +67,7 @@
 						<h2 class="dongwmtitle dongwmgreen">未来个人需要改进之处</h2></br>
 						<ol>
 							<li class="fragment highlight-red ">不懂算法/数据结构/设计模式不是好程序员！</li>
-							<li class="fragment highlight-red ">学好数学，统计和概率</li>
-							<li class="fragment highlight-red ">深入学习数据挖掘/数据仓库</li>
-							<li class="fragment highlight-red ">深入学习自然语言处理/数学计算和分析</li>
+							<li class="fragment highlight-red ">学习自然语言处理/数据挖掘/数学计算和分析</li>
 							<li class="fragment highlight-red ">对大多数技术深入不够，对细节不求甚解，储备了很多需要学习的点</li>
 							<li class="fragment highlight-red ">基础不行，对一些东西理解和研究浪费的时间精力过多，或者只是泛泛理解</li>
 							<li class="fragment highlight-red ">多花些时间做有意义的事情，旅游，健身</li>
@@ -84,10 +85,11 @@
 					</br>
 						<ol>
 							<li class="fragment highlight-blue">继续学习python，c等，在技术能力上提高</li>
-							<li class="fragment highlight-blue">寻找优化性能，提高效率的技术和解决办法</li>
-							<li class="fragment highlight-blue">做好数据挖掘前端</li>
-							<li class="fragment highlight-blue">做好数据可视化</li>
-							<li class="fragment highlight-blue">在我职能范围内做好api,wiki和自动化</li>
+							<li class="fragment highlight-blue">读django/flask源码</li>
+							<li class="fragment highlight-blue">带好新人，工作职责内对自己的代码性能，注释，实现，风格负责</li>
+							<li class="fragment highlight-blue">做好数据可视化和挖掘项目</li>
+							<li class="fragment highlight-blue">参与其他产品的开发，做一个公共库，大家维护贡献</li>
+							<li class="fragment highlight-blue">有时间的话把公司的爬虫搞个clisp版^.^</li>
 						</ol>
 					<img id="leftimg" src ="images/zdcy.png"></p>
 					</section>
@@ -96,10 +98,9 @@
 					</br>
 						<ol>
 							<li class="fragment highlight-blue">XXX</li>
-							<li class="fragment highlight-blue">数据挖掘前端</li>
-							<li class="fragment highlight-blue">dc实验室的集合</li>
-							<li class="fragment highlight-blue">XXX</li>
-							<li class="fragment highlight-blue">其它工作</li>
+							<li class="fragment highlight-blue">数据中心V3</li>
+							<li class="fragment highlight-blue">dc实验室</li>
+							<li class="fragment highlight-blue">运维自动化</li>
 						</ol>
 					<img id="leftimg" src ="images/zdcy.png"></p>
 					</section>
@@ -166,7 +167,7 @@
 				<section>
 					<h1>谢谢！</h1>
 					 </br>
-					<h3><font face="comic sans ms">RD/数据挖掘<a href="#">董伟明</a></font></h3>
+					<h3><font face="comic sans ms">RD<a href="#">董伟明</a></font></h3>
 				</section>
 
 			</div>
@@ -178,18 +179,15 @@
 
 		<script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
+
 			Reveal.initialize({
 				controls: true,
 				progress: true,
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
-
-				// Optional libraries used to extend on reveal.js
+				theme: Reveal.getQueryHash().theme, 
+				transition: Reveal.getQueryHash().transition || 'default', 
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },

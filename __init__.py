@@ -1,26 +1,29 @@
-#coding=utf-8
+# coding=utf-8
 import sys
 import os
 
 from flask import Flask, g, request, render_template, \
-                    redirect, url_for, jsonify, _app_ctx_stack
+    redirect, url_for, jsonify, _app_ctx_stack
 from flask.ext import login
 from flask.ext.mongoengine import MongoEngine
 from social.apps.flask_app.routes import social_auth
 from social.apps.flask_app.template_filters import backends
 from social.apps.flask_app.models import User
 
-#Your setting file
+# Your setting file
 from flask_reveal import settings
+
 
 def static(filename):
     filepath = os.path.join(os.path.dirname(__file__), 'static', filename)
     last_modification = '%d' % os.path.getmtime(filepath)
     return url_for('static', filename=filename) + '?' + last_modification
 
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object(settings)
+
     @app.context_processor
     def inject_static():
         return dict(static=static)
@@ -37,11 +40,13 @@ login_manager.login_view = 'main'
 login_manager.login_message = ''
 login_manager.setup_app(app)
 
-from flask_reveal import routes 
+from flask_reveal import routes
+
 
 @app.template_filter('bool')
 def bool_filter(s):
     return str(s).lower()
+
 
 @login_manager.user_loader
 def load_user(userid):
@@ -54,7 +59,6 @@ def load_user(userid):
 @app.before_request
 def global_user():
     g.user = login.current_user
-
 
 
 @app.context_processor

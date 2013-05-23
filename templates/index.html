@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Welcome Reveal{% endblock %}
-{% block description %}<meta name="description" content="ddd"/>{% endblock %}
+{% block description %}<meta name="description" content="The easiest way to create and share beautiful presentations."/>{% endblock %}
 {% block bodyclass %}{{ super() }}<body class="index-view">{% endblock %}
 {% block sections %}
         <section class="marquee">
@@ -54,6 +54,8 @@
                 </a>
         </div>
 {% endblock %}
-{% block js %}<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script src="{{ static(filename='javascript/lib-core.min.js')}}"></script>
-        <script src="{{ static(filename='javascript/rvl.min.js')}}"></script>{% endblock %}
+{% block js %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="{{ static(filename='javascript/lib-core.min.js')}}"></script>
+<script src="{{ static(filename='javascript/rvl.min.js')}}"></script>
+{% endblock %}

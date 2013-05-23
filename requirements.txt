@@ -1,1 +1,6 @@
+flask
+mongoengine
 flask-mongoengine
+flask-script
+flask-login
+

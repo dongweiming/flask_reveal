@@ -1,8 +1,8 @@
-#coding=utf-8
+# coding=utf-8
 
 import datetime
 from mongoengine import Document, IntField, StringField, \
-						BooleanField, ObjectIdField, DateTimeField
+    BooleanField, ObjectIdField, DateTimeField
 
 
 class Logic(Document):
@@ -22,4 +22,3 @@ class Logic(Document):
     rtl = BooleanField(default=False)
     theme_color = StringField(max_length=200, default="grey-blue")
     center = BooleanField(default=False)
-

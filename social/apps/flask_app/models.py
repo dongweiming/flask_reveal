@@ -12,8 +12,6 @@ from social.storage.mongoengine_orm import MongoengineUserMixin, \
                                           MongoengineAssociationMixin, \
                                           MongoengineNonceMixin, \
                                           BaseMongoengineStorage
-from social.apps.flask_app.fields import JSONType
-
 
 class User(Document, UserMixin):
     username = StringField(max_length=200)
@@ -67,7 +65,7 @@ class Association(Document, MongoengineAssociationMixin):
     lifetime = IntField()
     assoc_type = StringField(max_length=64)
 
-class DjangoStorage(BaseMongoengineStorage):
+class MongoengineStorage(BaseMongoengineStorage):
     FlaskStorage.user = UserSocialAuth
     FlaskStorage.nonce = Nonce
     FlaskStorage.association = Association

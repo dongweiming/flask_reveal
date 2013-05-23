@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 
 import sys
 from flask.ext.script import Server, Manager, Shell
@@ -19,10 +19,10 @@ manager.add_command('shell', Shell(make_context=lambda: {
 
 
 #@manager.command
-#def syncdb():
+# def syncdb():
 #   from flask_reveal.models import User
 #   from social.apps.flask_app import models
-#   #create index
+# create index
 
 if __name__ == '__main__':
     manager.run()

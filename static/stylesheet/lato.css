@@ -24,8 +24,8 @@
   font-weight: 400;
   src: url('lato-italic.eot');
       src: url('lato-italic.eot?#iefix') format('embedded-opentype'),
-           url('../lato-italic.woff') format('woff'),
-           url('../lato-italic.ttf') format('truetype');
+           url('../fonts/lato-italic.woff') format('woff'),
+           url('../fonts/lato-italic.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Lato';

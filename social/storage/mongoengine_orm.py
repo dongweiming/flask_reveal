@@ -1,11 +1,12 @@
-"""SQLAlchemy models for Social Auth"""
+"""MongoDB models for Social Auth"""
 import base64
 import six
 from sqlalchemy.exc import IntegrityError
 
 from social.exceptions import NotAllowedToDisconnect
 from social.storage.base import UserMixin, AssociationMixin, NonceMixin, \
-                                BaseStorage
+    BaseStorage
+
 
 class MongoengineMixin(object):
 
@@ -21,7 +22,9 @@ class MongoengineMixin(object):
     def _del_session(cls, pk):
         raise NotImplementedError('Implement in subclass')
 
+
 class MongoengineUserMixin(MongoengineMixin, UserMixin):
+
     """Social Auth association model"""
     @classmethod
     def changed(cls, user):
@@ -32,37 +35,14 @@ class MongoengineUserMixin(MongoengineMixin, UserMixin):
             self._save_instance(self)
 
     @classmethod
-   # def allowed_to_disconnect(cls, user, backend_name, association_id=None):
     def disconnect(cls, name, user, association_id=None):
         if association_id is not None:
             qs = cls.user_model().objects(username=association_id)
-            print cls.objects(user__in=qs)
-        else:          
+        else:
             qs = cls.objects(provider__ne=backend_name)
-
-        #if hasattr(user, 'has_usable_password'):
-            # TODO
-        #    valid_password = user.has_usable_password()
-        #else:
-        #    valid_password = True
-        #return valid_password or qs.count() > 0
         if qs.count() == 0:
             raise NotAllowedToDisconnect()
         cls._del_session(qs)
-
-    @classmethod
-    def old_disconnect(cls, name, user, association_id=None):
-        if cls.allowed_to_disconnect(user, name, association_id):
-            from  flask import session
-            print session
-            if association_id:
-                pk = qs.filter(id=association_id).first().pk
-            else:
-                pk = qs.filter(provider=name).first().pk
-            qs = cls._get_session(pk)
-            
-        else:
-            raise NotAllowedToDisconnect()
 
     @classmethod
     def user_query(cls):
@@ -83,11 +63,12 @@ class MongoengineUserMixin(MongoengineMixin, UserMixin):
     @classmethod
     def create_user(cls, username, email=None):
         return cls._new_instance(cls.user_model(), username=username,
-                                email=email)
+                                 email=email)
 
     @classmethod
     def get_user(cls, pk):
         return cls._get_session(pk)
+
     @classmethod
     def get_name(cls, pk):
         return cls.user_model().objects(pk=pk)[0].username
@@ -98,14 +79,14 @@ class MongoengineUserMixin(MongoengineMixin, UserMixin):
             uid = str(uid)
         try:
             return cls.objects.filter(provider=provider,
-                                          uid=uid).first()
+                                      uid=uid).first()
         except IndexError:
             return None
 
     @classmethod
     def get_social_auth_for_user(cls, user):
         qs = cls.user_model().objects(username=user.username)
-        user.provider= cls.objects(user__in=qs)[0].provider
+        user.provider = cls.objects(user__in=qs)[0].provider
         return user
 
     @classmethod
@@ -116,6 +97,7 @@ class MongoengineUserMixin(MongoengineMixin, UserMixin):
 
 
 class MongoengineNonceMixin(NonceMixin):
+
     @classmethod
     def use(cls, server_url, timestamp, salt):
         kwargs = {'server_url': server_url, 'timestamp': timestamp,
@@ -127,12 +109,13 @@ class MongoengineNonceMixin(NonceMixin):
 
 
 class MongoengineAssociationMixin(AssociationMixin):
+
     @classmethod
     def store(cls, server_url, association):
         # Don't use get_or_create because issued cannot be null
         try:
             assoc = cls.objects.filter(server_url=server_url,
-                                           handle=association.handle)[0]
+                                       handle=association.handle)[0]
         except IndexError:
             assoc = cls(server_url=server_url,
                         handle=association.handle)
