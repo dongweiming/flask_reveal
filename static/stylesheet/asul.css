@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('asul-regular.eot');
   src: url('asul-regular.eot?#iefix') format('embedded-opentype'),
-       url('asul-regular.woff') format('woff'),
-       url('asul-regular.ttf') format('truetype');
+       url('../fonts/asul-regular.woff') format('woff'),
+       url('../fonts/asul-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Asul';
@@ -15,6 +15,6 @@
   font-weight: 700;
   src: url('asul-bold.eot');
   src: url('asul-bold.eot?#iefix') format('embedded-opentype'),
-       url('asul-bold.woff') format('woff'),
-       url('asul-bold.ttf') format('truetype');
+       url('../fonts/asul-bold.woff') format('woff'),
+       url('../fonts/asul-bold.ttf') format('truetype');
 }

@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('josefinsans-regular.eot');
   src: url('josefinsans-regular.eot?#iefix') format('embedded-opentype'),
-       url('josefinsans-regular.woff') format('woff'),
-       url('josefinsans-regular.ttf') format('truetype');
+       url('../fonts/josefinsans-regular.woff') format('woff'),
+       url('../fonts/josefinsans-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Josefin Sans';
@@ -15,8 +15,8 @@
   font-weight: 700;
   src: url('josefinsans-bold.eot');
   src: url('josefinsans-bold.eot?#iefix') format('embedded-opentype'),
-       url('josefinsans-bold.woff') format('woff'),
-       url('josefinsans-bold.ttf') format('truetype');
+       url('../fonts/josefinsans-bold.woff') format('woff'),
+       url('../fonts/josefinsans-bold.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Josefin Sans';
@@ -24,8 +24,8 @@
   font-weight: 400;
   src: url('josefinsans-italic.eot');
   src: url('josefinsans-italic.eot?#iefix') format('embedded-opentype'),
-       url('josefinsans-italic.woff') format('woff'),
-       url('josefinsans-italic.ttf') format('truetype');
+       url('../fonts/josefinsans-italic.woff') format('woff'),
+       url('../fonts/josefinsans-italic.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Josefin Sans';
@@ -33,6 +33,6 @@
   font-weight: 700;
   src: url('josefinsans-bolditalic.eot');
   src: url('josefinsans-bolditalic.eot?#iefix') format('embedded-opentype'),
-       url('josefinsans-bolditalic.woff') format('woff'),
-       url('josefinsans-bolditalic.ttf') format('truetype');
+       url('../fonts/josefinsans-bolditalic.woff') format('woff'),
+       url('../fonts/josefinsans-bolditalic.ttf') format('truetype');
 }

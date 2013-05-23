@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('oxygen-regular.eot');
   src: url('oxygen-regular.eot?#iefix') format('embedded-opentype'),
-       url('oxygen-regular.woff') format('woff'),
-       url('oxygen-regular.ttf') format('truetype');
+       url('../fonts/oxygen-regular.woff') format('woff'),
+       url('../fonts/oxygen-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Oxygen';
@@ -15,6 +15,6 @@
   font-weight: 700;
   src: url('oxygen-bold.eot');
   src: url('oxygen-bold.eot?#iefix') format('embedded-opentype'),
-       url('oxygen-bold.woff') format('woff'),
-       url('oxygen-bold.ttf') format('truetype');
+       url('../fonts/oxygen-bold.woff') format('woff'),
+       url('../fonts/oxygen-bold.ttf') format('truetype');
 }

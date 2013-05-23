@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('cabinsketch-regular.eot');
   src: url('cabinsketch-regular.eot?#iefix') format('embedded-opentype'),
-       url('cabinsketch-regular.woff') format('woff'),
-       url('cabinsketch-regular.ttf') format('truetype');
+       url('../fonts/cabinsketch-regular.woff') format('woff'),
+       url('../fonts/cabinsketch-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Cabin Sketch';
@@ -15,6 +15,6 @@
   font-weight: 700;
   src: url('cabinsketch-regular.eot');
   src: url('cabinsketch-regular.eot?#iefix') format('embedded-opentype'),
-       url('cabinsketch-regular.woff') format('woff'),
-       url('cabinsketch-regular.ttf') format('truetype');
+       url('../fonts/cabinsketch-regular.woff') format('woff'),
+       url('../fonts/cabinsketch-regular.ttf') format('truetype');
 }

@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('newscycle-regular.eot');
   src: url('newscycle-regular.eot?#iefix') format('embedded-opentype'),
-       url('newscycle-regular.woff') format('woff'),
-       url('newscycle-regular.ttf') format('truetype');
+       url('../fonts/newscycle-regular.woff') format('woff'),
+       url('../fonts/newscycle-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'News Cycle';
@@ -15,6 +15,6 @@
   font-weight: 700;
   src: url('newscycle-bold.eot');
   src: url('newscycle-bold.eot?#iefix') format('embedded-opentype'),
-       url('newscycle-bold.woff') format('woff'),
-       url('newscycle-bold.ttf') format('truetype');
+       url('../fonts/newscycle-bold.woff') format('woff'),
+       url('../fonts/newscycle-bold.ttf') format('truetype');
 }

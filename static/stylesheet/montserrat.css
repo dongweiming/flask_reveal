@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('montserrat-regular.eot');
   src: url('montserrat-regular.eot?#iefix') format('embedded-opentype'),
-       url('montserrat-regular.woff') format('woff'),
-       url('montserrat-regular.ttf') format('truetype');
+       url('../fonts/montserrat-regular.woff') format('woff'),
+       url('../fonts/montserrat-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Montserrat';
@@ -15,6 +15,6 @@
   font-weight: 700;
   src: url('montserrat-bold.eot');
   src: url('montserrat-bold.eot?#iefix') format('embedded-opentype'),
-       url('montserrat-bold.woff') format('woff'),
-       url('montserrat-bold.ttf') format('truetype');
+       url('../fonts/montserrat-bold.woff') format('woff'),
+       url('../fonts/montserrat-bold.ttf') format('truetype');
 }

@@ -6,8 +6,8 @@
   font-weight: 400;
   src: url('quicksand-regular.eot');
   src: url('quicksand-regular.eot?#iefix') format('embedded-opentype'),
-       url('quicksand-regular.woff') format('woff'),
-       url('quicksand-regular.ttf') format('truetype');
+       url('../fonts/quicksand-regular.woff') format('woff'),
+       url('../fonts/quicksand-regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Quicksand';
@@ -15,6 +15,6 @@
   font-weight: 700;
   src: url('quicksand-bold.eot');
   src: url('quicksand-bold.eot?#iefix') format('embedded-opentype'),
-       url('quicksand-bold.woff') format('woff'),
-       url('quicksand-bold.ttf') format('truetype');
+       url('../fonts/quicksand-bold.woff') format('woff'),
+       url('../fonts/quicksand-bold.ttf') format('truetype');
 }
