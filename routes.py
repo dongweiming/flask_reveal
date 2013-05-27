@@ -161,6 +161,5 @@ def login_redir():
 
 
 @app.route('/tos')
-@login_required
 def tos():
     return render_template('tos.html')
