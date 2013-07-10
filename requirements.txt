@@ -3,4 +3,7 @@ mongoengine
 flask-mongoengine
 flask-script
 flask-login
+requests
+six
+sqlaichemy
 
