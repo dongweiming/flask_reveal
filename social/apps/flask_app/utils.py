@@ -41,7 +41,7 @@ def strategy(redirect_uri=None):
 def login_required(fn):
     @wraps(fn)
     def decorated_view(*args, **kwargs):
-        if not g.user.is_authenticated():
+        if not g.user.is_authenticated:
             return redirect('/')
         return fn(*args, **kwargs)
     return decorated_view

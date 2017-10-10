@@ -32,7 +32,7 @@
             <span>beta</span>
           </a>
         </h1>
-        {% if current_user.is_authenticated() %}
+        {% if current_user.is_authenticated %}
         <a class="neutral-button sign-out" href="{{ url_for("social.disconnect", backend=session.provider, association_id=backends.associated.username) }}">Sign Out</a><a class="positive-button create-deck" href="/{{backends.associated.username}}/new">New Deck</a><a class="profile" href="/{{ backends.associated.username }}"><span class="iconic user"></span><span class="username">{{ backends.associated.username }}</span></a>
         {% else %}
         <a class="positive-button sign-in" href="">Sign In</a>

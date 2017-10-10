@@ -1,7 +1,7 @@
 # coding=utf-8
 
 import sys
-from flask.ext.script import Server, Manager, Shell
+from flask_script import Server, Manager, Shell
 sys.path.append('..')
 from social.apps.flask_app.models import User, UserSocialAuth
 from flask_reveal import app, db, models

@@ -76,7 +76,7 @@ def home(username):
 
 
 @app.route('/<string:username>/<string:title>')
-#@login_required
+@login_required
 def deck(username, title):
     if checkuser(username):
         deck = Logic.objects(username=username, title=title)
@@ -119,12 +119,16 @@ def edit(username, title):
 
 
 @app.route('/api/decks/<deskname>', methods=['PUT', 'DELETE'])
-#@login_required
+@login_required
 def deck_api(deskname):
     if request.method == 'PUT':
         ppt = request.form
         up = {}
         for k, v in comb(ppt).iteritems():
+            if v == 'true':
+                v = True
+            elif v == 'false':
+                v = False
             up['set__{}'.format(k)] = v
         Logic.objects(tid=deskname[:-5]).update(upsert=True, **up)
         return jsonify(message=1)
